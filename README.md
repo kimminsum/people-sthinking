@@ -1,1 +1,1 @@
-# people-sthinking
+people's thinking
