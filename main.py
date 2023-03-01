@@ -4,7 +4,7 @@ import re
 import nltk
 
 
-class Scrapping:
+class Scrapping(object):
     def __init__(self, url):
         self.url: str = url # url
         print(self.scap())
