@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -41,3 +42,8 @@ class Scrapping(object):
 if __name__=="__main__":
     subject = "chatgpt"
     sp = Scrapping(f"https://www.google.com/search?q={subject}&sxsrf=AJOqlzUkhgd9OvxXyTuPekS_n_3HvHVO6A:1677636607928&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjmh8-w07n9AhUYslYBHS6cDv8Q_AUoBHoECAEQBg&biw=960&bih=936&dpr=1")
+=======
+import bs4
+import request
+# import selenium
+>>>>>>> bfeff4f1578d66bf4fd5ade7a7b73294531ed199
