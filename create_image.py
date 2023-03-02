@@ -9,9 +9,9 @@ from PIL import Image
 import numpy as np
 
 
-class Scrapping:
-    def __init__(self, url):
-        self.url: str = url # url
+class CreateWordCloud:
+    def __init__(self, subject):
+        self.url: str = f"https://www.google.com/search?q={subject}&sxsrf=AJOqlzUkhgd9OvxXyTuPekS_n_3HvHVO6A:1677636607928&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjmh8-w07n9AhUYslYBHS6cDv8Q_AUoBHoECAEQBg&biw=960&bih=936&dpr=1" # url
         print(self.scap())
         self.wordclouding(self.scap())
 
@@ -49,15 +49,10 @@ class Scrapping:
     def wordclouding(self, words):
         img = Image.open('background.jpg')
         img_array = np.array(img)
-        c = Counter(words) # 위에서 얻은 words를 처리하여 단어별 빈도수 형태의 딕셔너리 데이터를 구함
+        c = Counter(words) # words to dictortionary
         wc = WordCloud(font_path='malgun', width=400, height=400, scale=2.0, max_font_size=250, mask=img_array)
         gen = wc.generate_from_frequencies(c)
         plt.figure()
         plt.imshow(gen)
         plt.show()
         wc.to_file("cloudword.png")
-
-
-if __name__=="__main__":
-    subject = "chatgpt"
-    sp = Scrapping(f"https://www.google.com/search?q={subject}&sxsrf=AJOqlzUkhgd9OvxXyTuPekS_n_3HvHVO6A:1677636607928&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjmh8-w07n9AhUYslYBHS6cDv8Q_AUoBHoECAEQBg&biw=960&bih=936&dpr=1")
