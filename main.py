@@ -13,7 +13,11 @@ import numpy as np
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
-
+"""
+1. Get background image from website -> save as ./DB
+2. Generate word cloud image depending on background image
+3. Show generated image on website
+"""
 
 
 class CreateWordCloud:
@@ -24,9 +28,23 @@ class CreateWordCloud:
 
     """__main__"""
     def main(self):
-        # print(self.scap())
-        # self.wordclouding(self.scap())
         self.website()
+        print(self.scap())
+        self.wordclouding(self.scap())
+
+    """Get background image and submit result picture"""
+    def website(self):
+        app = Flask(__name__)
+
+        @app.route("/", methods=["POST","GET"])
+        def upload_file():
+            if request.method == "POST":
+                f = request.files["file"]
+                f.filename = "background.png"
+                f.save(f"{self.database_path}/{secure_filename(f.filename)}")
+            return render_template("index.html")
+
+        app.run(debug=True)
 
     """Scrapping Data -> String"""
     def scap(self) -> list[str]:
@@ -70,23 +88,6 @@ class CreateWordCloud:
         plt.imshow(gen)
         plt.show()
         wc.to_file(f"{self.database_path}/cloudword.png")
-
-    """Get background image and submit result picture"""
-    def website(self):
-        app = Flask(__name__)
-
-        @app.route("/")
-        def upload_file():
-            return render_template("index.html")
-
-        @app.route("/uploader", methods=["GET", "POST"])
-        def uploader_file():
-            if request.method == "POST":
-                f = request.files["file"]
-                f.save(f"DB/{secure_filename(f.filename)}")
-                return "file uploaded successfully"
-
-        app.run(debug=True)
 
 
 
