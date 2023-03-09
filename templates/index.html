@@ -4,15 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <title>Word Cloud Generator</title>
 </head>
 <body>
-    <form action="/"
-        method="POST"
-        enctype="multipart/form-data">
-        <input type="file" name="file"/>
-        <input type="submit" />
-    </form>
+    <!-- Resulted image -->
+    <div>
+            <div class="center">
+                <h1 class="title">Word Cloudㄻㅇㄴㄻ Service</h1>
+            </div>
+        <!-- Main image -->
+        <div class="center">
+            <img class="main_image" src="{{ user_image }}" alt="Generated Image">
+        </div>
+        <!-- Image upload function -->
+        <div class="center">
+            <form action="/"
+                method="POST"
+                enctype="multipart/form-data">
+                <input type="file" value="./test.txt" name="file"/>
+                <input type="submit" value="SUBMIT"/>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

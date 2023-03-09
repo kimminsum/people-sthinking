@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+    margin: 0%;
+    font-family: 'Lobster', cursive;
+}
+
+input[type=button] {
+    font-family: 'Lobster', cursive;
+}
+
+.title {
+    font-size: 250%;
+}
+
+.main_image {
+    /* Visually beautiful */
+    border-radius: 30px;
+    padding: 5px;
+    width: 500px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* nav {
+    border-bottom: 5px solid black;
+} */
